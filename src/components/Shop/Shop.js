@@ -42,16 +42,29 @@ const clearCart = () => {
 useEffect(() => {
     const storedCart = getStoredCart();
     const savedCart = [];
-    console.log(storedCart);
-    for (const id in storedCart) {
-        const addedProduct = products.find(product => product._id === id);
-        if (addedProduct) {
-            const quantity = storedCart[id];
-            addedProduct.quantity = quantity;
-            savedCart.push(addedProduct);
-        }
-    }
-    setCart(savedCart);
+    const ids =Object.keys(storedCart);
+    console.log(ids);
+
+    fetch('',{
+        method: 'POST',
+        headers:{
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(ids)
+    })
+    .then(res => res.json())
+    .then(data =>{
+
+    })
+    // for (const id in storedCart) {
+    //     const addedProduct = products.find(product => product._id === id);
+    //     if (addedProduct) {
+    //         const quantity = storedCart[id];
+    //         addedProduct.quantity = quantity;
+    //         savedCart.push(addedProduct);
+    //     }
+    // }
+    // setCart(savedCart);
 }, [products])
 
 const handleAddToCart = (selectedProduct) => {
