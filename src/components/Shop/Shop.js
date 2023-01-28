@@ -42,6 +42,7 @@ const clearCart = () => {
 useEffect(() => {
     const storedCart = getStoredCart();
     const savedCart = [];
+    console.log(storedCart);
     for (const id in storedCart) {
         const addedProduct = products.find(product => product._id === id);
         if (addedProduct) {
